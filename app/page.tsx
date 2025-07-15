@@ -25,6 +25,7 @@ import {
   Users,
   Volume2,
   VolumeX,
+  Gamepad2,
 } from "lucide-react"
 import Image from "next/image"
 // Removed YouTube import
@@ -373,7 +374,7 @@ export default function FootballCandidature() {
           </div>
 
           <Tabs defaultValue="identity" className="flex-1 flex flex-col">
-            <TabsList className="grid w-full grid-cols-6 bg-black/80 border-green-500 border-2 mb-8 backdrop-blur-sm animate-fade-in-up rounded-full">
+            <TabsList className="grid w-full grid-cols-7 bg-black/80 border-green-500 border-2 mb-8 backdrop-blur-sm animate-fade-in-up rounded-full">
               <TabsTrigger
                 value="identity"
                 className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
@@ -409,6 +410,12 @@ export default function FootballCandidature() {
                 className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
               >
                 Ego
+              </TabsTrigger>
+              <TabsTrigger
+                value="rp-experience"
+                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
+              >
+                Expérience RP
               </TabsTrigger>
             </TabsList>
 
@@ -777,6 +784,62 @@ export default function FootballCandidature() {
                           </li>
                         </ul>
                       </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="rp-experience" className="flex-1">
+              <Card className="bg-black/80 border-green-500 border-2 h-full backdrop-blur-sm animate-fade-in-up flex flex-col">
+                <CardHeader>
+                  <CardTitle className="text-4xl text-green-400 flex items-center">
+                    <Gamepad2 className="w-10 h-10 mr-4 animate-pulse" />
+                    EXPÉRIENCE ROLEPLAY
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-1 overflow-y-auto custom-scrollbar">
+                  <div className="space-y-8 text-center">
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-bold text-green-300 mb-4 flex items-center justify-center">
+                        <Play className="w-6 h-6 mr-2" />
+                        HEURES DE JEU
+                      </h3>
+                      <p className="text-white text-4xl font-bold">
+                        {"Environ "}
+                        <span className="text-green-400">7000h</span>
+                      </p>
+                      <p className="text-gray-300 text-lg">{"sur diverses plateformes et serveurs Roleplay."}</p>
+                    </div>
+
+                    <Separator className="bg-gradient-to-r from-transparent via-green-500 to-transparent" />
+
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-bold text-green-300 mb-4 flex items-center justify-center">
+                        <Users className="w-6 h-6 mr-2" />
+                        SERVEURS FRÉQUENTÉS
+                      </h3>
+                      <div className="flex flex-wrap justify-center gap-3">
+                        {[
+                          "FOC Tokyo Ghoul",
+                          "One Piece",
+                          "Bleach",
+                          "FSC Naruto",
+                          "Tokyo Revenger",
+                          "MHA",
+                          "Et bien plus...",
+                        ].map((server, index) => (
+                          <Badge
+                            key={index}
+                            className="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg px-4 py-2 rounded-full"
+                          >
+                            {server}
+                          </Badge>
+                        ))}
+                      </div>
+                      <p className="text-gray-300 text-lg mt-4">
+                        {"Une vaste expérience à travers différents univers Roleplay."}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
