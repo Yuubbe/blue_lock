@@ -52,7 +52,8 @@ export default function FootballCandidature() {
 
   // Met à jour le volume du player quand le slider change
   useEffect(() => {
-    if (player) {
+    // Add a check to ensure player and its setVolume method are available
+    if (player && typeof player.setVolume === "function") {
       if (isMuted) {
         player.setVolume(0)
       } else {
@@ -351,7 +352,6 @@ export default function FootballCandidature() {
               },
             }}
             onReady={(e) => {
-              e.target.setVolume(volume)
               setPlayer(e.target)
             }}
             className="hidden"
