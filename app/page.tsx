@@ -266,7 +266,13 @@ export default function FootballCandidature() {
         {/* Audio Player with volume control */}
         {audioStarted && (
           <>
-            <audio ref={audioRef} src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BLUELOCK%20Original%20Soundtrack%20%20Puzzle-zYdhv8AWCXUYr6TfY4nFxJ46nWub1K.mp3" autoPlay loop className="hidden" />
+            <audio
+              ref={audioRef}
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BLUELOCK%20Original%20Soundtrack%20%20Puzzle-zYdhv8AWCXUYr6TfY4nFxJ46nWub1K.mp3"
+              autoPlay
+              loop
+              className="hidden"
+            />
             {/* Slider dans le style Blue Lock */}
             <div className="fixed bottom-6 right-6 z-50 bg-black/80 border-2 border-green-500 p-3 rounded-lg shadow-lg backdrop-blur-sm">
               <div className="flex items-center space-x-3">
@@ -320,7 +326,13 @@ export default function FootballCandidature() {
       {/* Audio Player with volume control */}
       {audioStarted && (
         <>
-          <audio ref={audioRef} src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BLUELOCK%20Original%20Soundtrack%20%20Puzzle-zYdhv8AWCXUYr6TfY4nFxJ46nWub1K.mp3" autoPlay loop className="hidden" />
+          <audio
+            ref={audioRef}
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BLUELOCK%20Original%20Soundtrack%20%20Puzzle-zYdhv8AWCXUYr6TfY4nFxJ46nWub1K.mp3"
+            autoPlay
+            loop
+            className="hidden"
+          />
           {/* Slider dans le style Blue Lock */}
           <div className="fixed bottom-6 right-6 z-50 bg-black/80 border-2 border-green-500 p-3 rounded-lg shadow-lg backdrop-blur-sm">
             <div className="flex items-center space-x-3">
@@ -361,40 +373,40 @@ export default function FootballCandidature() {
           </div>
 
           <Tabs defaultValue="identity" className="flex-1 flex flex-col">
-            <TabsList className="grid w-full grid-cols-6 bg-black/80 border-green-500 border-2 mb-8 backdrop-blur-sm animate-fade-in-up">
+            <TabsList className="grid w-full grid-cols-6 bg-black/80 border-green-500 border-2 mb-8 backdrop-blur-sm animate-fade-in-up rounded-full">
               <TabsTrigger
                 value="identity"
-                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black"
+                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
               >
                 Identité
               </TabsTrigger>
               <TabsTrigger
                 value="style"
-                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black"
+                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
               >
                 Style de Jeu
               </TabsTrigger>
               <TabsTrigger
                 value="story"
-                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black"
+                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
               >
                 Histoire
               </TabsTrigger>
               <TabsTrigger
                 value="stats"
-                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black"
+                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
               >
                 Capacités
               </TabsTrigger>
               <TabsTrigger
                 value="techniques"
-                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black"
+                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
               >
                 Techniques
               </TabsTrigger>
               <TabsTrigger
                 value="ego"
-                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black"
+                className="text-green-400 data-[state=active]:bg-green-600 data-[state=active]:text-black rounded-full"
               >
                 Ego
               </TabsTrigger>
