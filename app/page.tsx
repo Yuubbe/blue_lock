@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react" // Import useRef
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -27,13 +27,12 @@ import {
   VolumeX,
 } from "lucide-react"
 import Image from "next/image"
-import YouTube from "react-youtube"
+// Removed YouTube import
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 
 export default function FootballCandidature() {
-  // Correction mismatch SSR/Client pour les points animés + gestion volume
   const [dotStyles, setDotStyles] = useState<React.CSSProperties[]>([])
-  const [player, setPlayer] = useState<any>(null)
+  const audioRef = useRef<HTMLAudioElement>(null) // Create a ref for the audio element
   const [volume, setVolume] = useState(20) // 20% par défaut
   const [isMuted, setIsMuted] = useState(false)
 
@@ -52,15 +51,10 @@ export default function FootballCandidature() {
 
   // Met à jour le volume du player quand le slider change
   useEffect(() => {
-    // Add a check to ensure player and its setVolume method are available
-    if (player && typeof player.setVolume === "function") {
-      if (isMuted) {
-        player.setVolume(0)
-      } else {
-        player.setVolume(volume)
-      }
+    if (audioRef.current) {
+      audioRef.current.volume = isMuted ? 0 : volume / 100 // Volume for HTML audio is 0-1
     }
-  }, [volume, player, isMuted])
+  }, [volume, isMuted])
 
   const toggleMute = () => {
     setIsMuted(!isMuted)
@@ -80,6 +74,9 @@ export default function FootballCandidature() {
   const startExperience = () => {
     setShowIntro(false)
     setAudioStarted(true)
+    if (audioRef.current) {
+      audioRef.current.play().catch((error) => console.error("Error playing audio:", error))
+    }
   }
 
   const physicalStats = [
@@ -266,26 +263,10 @@ export default function FootballCandidature() {
           </div>
         </div>
 
-        {/* YouTube Audio with volume control */}
+        {/* Audio Player with volume control */}
         {audioStarted && (
           <>
-            <YouTube
-              videoId="QMyEEK7_D1Q"
-              opts={{
-                width: "0",
-                height: "0",
-                playerVars: {
-                  autoplay: 1,
-                  loop: 1,
-                  playlist: "QMyEEK7_D1Q",
-                  mute: 0,
-                },
-              }}
-              onReady={(e) => {
-                setPlayer(e.target)
-              }}
-              className="hidden"
-            />
+            <audio ref={audioRef} src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BLUELOCK%20Original%20Soundtrack%20%20Puzzle-zYdhv8AWCXUYr6TfY4nFxJ46nWub1K.mp3" autoPlay loop className="hidden" />
             {/* Slider dans le style Blue Lock */}
             <div className="fixed bottom-6 right-6 z-50 bg-black/80 border-2 border-green-500 p-3 rounded-lg shadow-lg backdrop-blur-sm">
               <div className="flex items-center space-x-3">
@@ -336,26 +317,10 @@ export default function FootballCandidature() {
         </div>
       </div>
 
-      {/* YouTube Audio with volume control */}
+      {/* Audio Player with volume control */}
       {audioStarted && (
         <>
-          <YouTube
-            videoId="QMyEEK7_D1Q"
-            opts={{
-              width: "0",
-              height: "0",
-              playerVars: {
-                autoplay: 1,
-                loop: 1,
-                playlist: "QMyEEK7_D1Q",
-                mute: 0,
-              },
-            }}
-            onReady={(e) => {
-              setPlayer(e.target)
-            }}
-            className="hidden"
-          />
+          <audio ref={audioRef} src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BLUELOCK%20Original%20Soundtrack%20%20Puzzle-zYdhv8AWCXUYr6TfY4nFxJ46nWub1K.mp3" autoPlay loop className="hidden" />
           {/* Slider dans le style Blue Lock */}
           <div className="fixed bottom-6 right-6 z-50 bg-black/80 border-2 border-green-500 p-3 rounded-lg shadow-lg backdrop-blur-sm">
             <div className="flex items-center space-x-3">
